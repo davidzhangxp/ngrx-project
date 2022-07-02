@@ -11,6 +11,8 @@ import { todoReducer } from './ngrx/todo/todo.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 import { HttpClientModule } from '@angular/common/http';
+import { TodoEffects } from './ngrx/todo/todo.effect';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent, MyCounterComponent, TodoComponent],
@@ -18,12 +20,13 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    ReactiveFormsModule,
     StoreModule.forRoot({ counter: counterReducer, todos: todoReducer }, {}),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       name: 'Todo Demo',
     }),
-    EffectsModule.forRoot([]),
+    EffectsModule.forRoot([TodoEffects]),
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,5 +1,6 @@
 <p>todo works!</p>
-<input type="text" />
+<input type="text" [formControl]="form" (change)="onChange()" />
 <div *ngFor="let todo of todolist$ | async">
-  {{ todo.title }}
+  {{ todo.id }}{{ todo.title }}
+  <button (click)="onDelete(todo.id)">X</button>
 </div>

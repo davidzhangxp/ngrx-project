@@ -7,10 +7,13 @@ describe('MyCounterComponent', () => {
   let component: MyCounterComponent;
   let fixture: ComponentFixture<MyCounterComponent>;
   let store: Store;
+  let mockStore: any;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
+  beforeEach(() => {
+    mockStore = jasmine.createSpyObj(['dispatch', 'select']);
+    TestBed.configureTestingModule({
       declarations: [MyCounterComponent],
+      providers: [{ provide: store, useValue: mockStore }],
     }).compileComponents();
   });
 
